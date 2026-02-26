@@ -1,12 +1,12 @@
-package br.com.strand.cm.view;
+package br.com.strand.minesfield.view;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import br.com.strand.cm.exception.ExitException;
-import br.com.strand.cm.exception.ExplosionException;
-import br.com.strand.cm.model.Board;
+import br.com.strand.minesfield.exception.ExitException;
+import br.com.strand.minesfield.exception.ExplosionException;
+import br.com.strand.minesfield.model.Board;
 
 public class ConsoleBoard {
 	private Board board;

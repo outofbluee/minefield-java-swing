@@ -1,4 +1,4 @@
-package br.com.strand.cm.model;
+package br.com.strand.minesfield.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

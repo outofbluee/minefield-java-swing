@@ -1,10 +1,10 @@
-package br.com.strand.cm.model;
+package br.com.strand.minesfield.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import br.com.strand.cm.exception.ExplosionException;
+import br.com.strand.minesfield.exception.ExplosionException;
 
 public class Field {
 	private boolean opened = false;

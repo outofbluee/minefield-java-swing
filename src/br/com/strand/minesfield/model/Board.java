@@ -1,10 +1,10 @@
-package br.com.strand.cm.model;
+package br.com.strand.minesfield.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import br.com.strand.cm.exception.ExplosionException;
+import br.com.strand.minesfield.exception.ExplosionException;
 
 public class Board {
 	private int lines;

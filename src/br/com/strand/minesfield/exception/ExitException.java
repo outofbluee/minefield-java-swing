@@ -1,4 +1,4 @@
-package br.com.strand.cm.exception;
+package br.com.strand.minesfield.exception;
 
 @SuppressWarnings("serial")
 public class ExitException extends RuntimeException {

@@ -1,7 +1,7 @@
-package br.com.strand.cm;
+package br.com.strand.minesfield;
 
-import br.com.strand.cm.model.Board;
-import br.com.strand.cm.view.ConsoleBoard;
+import br.com.strand.minesfield.model.Board;
+import br.com.strand.minesfield.view.ConsoleBoard;
 
 public class App {
 	public static void main(String[] args) {
