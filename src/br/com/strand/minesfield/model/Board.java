@@ -8,9 +8,9 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Board implements FieldObserver {
-	private int lines;
-	private int columns;
-	private int undermines;
+	private final int lines;
+	private final int columns;
+	private final int undermines;
 	
 	private final List<Field> fields = new ArrayList<>();
 	private final Set<Consumer<ResultEvent>> observers = new LinkedHashSet<>();
@@ -27,6 +27,10 @@ public class Board implements FieldObserver {
 	
 	public void addObserver(Consumer<ResultEvent> obsever) {
 		observers.add(obsever);
+	}
+	
+	public void forEachField(Consumer<Field> function) {
+		fields.forEach(function);
 	}
 	
 	public void openField(int line, int column) {
@@ -109,6 +113,17 @@ public class Board implements FieldObserver {
 	private void showMines() {
 		fields.stream()
 		.filter(c -> c.isUndermined())
+		.filter(c -> !c.isMarked())
 		.forEach(f -> f.setOpened(true));
 	}
+
+	public int getLines() {
+		return lines;
+	}
+
+	public int getColumns() {
+		return columns;
+	}
+	
+	
 }

@@ -62,7 +62,7 @@ public class Field {
 		}
 	}
 	
-	boolean open() {
+	public boolean open() {
 		if(!opened && !marked) {
 			if(undermined) {
 				notifyObservers(FieldEvent.EXPLODE);
@@ -81,7 +81,7 @@ public class Field {
 		}
 	}
 	
-	void toggleMarked() {
+	public void toggleMarked() {
 		if(!opened) {
 			marked = !marked;
 			if(marked) {
@@ -96,25 +96,25 @@ public class Field {
 		this.undermined = true;
 	}
 	
-	boolean safeNeighborhood() {
+	public boolean safeNeighborhood() {
 		return neighbors.stream().noneMatch(n -> n.undermined);
 	}
 	
-	// outros métodos
 	boolean goalAchieved() {
 		boolean revealed = !undermined && opened;
 		boolean secure = undermined && marked;
 		return revealed || secure;
 	}
 	
-	long minesInNeighborhood() {
-		return neighbors.stream().filter(n -> n.undermined).count();
+	public int minesInNeighborhood() {
+		return (int) neighbors.stream().filter(n -> n.undermined).count();
 	}
 	
 	void restart() {
 		opened = false;
 		undermined = false;
 		marked = false;
+		notifyObservers(FieldEvent.RESTART);
 	}
 
 	private void notifyObservers(FieldEvent event) {
@@ -141,7 +141,7 @@ public class Field {
 		return !isOpened();
 	}
 	
-	boolean isUndermined() {
+	public boolean isUndermined() {
 		return undermined;
 	}
 
@@ -156,5 +156,7 @@ public class Field {
 	public List<Field> getNeighbors() {
 		return neighbors;
 	}
+	
+	
 	
 }

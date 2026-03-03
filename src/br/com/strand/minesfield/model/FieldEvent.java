@@ -4,5 +4,6 @@ public enum FieldEvent {
 	OPEN,
 	MARK,
 	UNMARK,
-	EXPLODE
+	EXPLODE,
+	RESTART
 }
