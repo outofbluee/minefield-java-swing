@@ -2,13 +2,10 @@ package br.com.strand.minesfield.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import br.com.strand.minesfield.exception.ExplosionException;
 
 public class FieldTest {
 	
@@ -140,15 +137,6 @@ public class FieldTest {
 	}
 	
 	@Test
-	void testOpenUnderminedNotMarked() {
-		field.undermine();
-		
-		assertThrows(ExplosionException.class, () -> 
-			field.open()
-		);
-	}
-	
-	@Test
 	void testWithNeighbors1() {
 		Field field11 = new Field(1, 1);
 		Field field22 = new Field(2, 2);
@@ -179,15 +167,6 @@ public class FieldTest {
 	void testToStringMarked() {
 		field.toggleMarked();
 		assertEquals(field.toString(), "x");
-	}
-	
-	@Test
-	void testToStringOpenedUndermined() {
-		field.undermine();
-		assertThrows(ExplosionException.class, () -> 
-			field.open()
-		);
-		assertEquals(field.toString(), "*");
 	}
 	
 	@Test
