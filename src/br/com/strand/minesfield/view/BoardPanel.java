@@ -13,8 +13,6 @@ public class BoardPanel extends JPanel {
 	
 	public BoardPanel(Board board) {
 		setLayout(new GridLayout(board.getLines(), board.getColumns()));
-		int total = board.getLines() * board.getColumns();
-		
 		board.forEachField(c -> add(new FieldButton(c)));
 		board.addObserver(e -> {
 			SwingUtilities.invokeLater(() -> {

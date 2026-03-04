@@ -13,7 +13,7 @@ public class Board implements FieldObserver {
 	private final int undermines;
 	
 	private final List<Field> fields = new ArrayList<>();
-	private final Set<Consumer<ResultEvent>> observers = new LinkedHashSet<>();
+	private final Set<BoardObserver> observers = new LinkedHashSet<>();
 
 	public Board(int lines, int columns, int undermines) {
 		this.lines = lines;
@@ -25,7 +25,7 @@ public class Board implements FieldObserver {
 		drawMines();
 	}
 	
-	public void addObserver(Consumer<ResultEvent> obsever) {
+	public void addObserver(BoardObserver obsever) {
 		observers.add(obsever);
 	}
 	
@@ -50,8 +50,8 @@ public class Board implements FieldObserver {
 			.ifPresent(f -> f.toggleMarked());
 	}
 	
-	private void notifyObservers(boolean result) {
-		observers.stream().forEach(o -> o.accept(new ResultEvent(result)));
+	private void notifyObservers(BoardEvent event) {
+		observers.stream().forEach(o -> o.eventOccurred(event));
 	}
 	
 	private void generateFields() {
@@ -104,9 +104,9 @@ public class Board implements FieldObserver {
 	public void eventOccurred(Field field, FieldEvent event) {
 		if (event == FieldEvent.EXPLODE) {
 			showMines();
-			notifyObservers(false);
+			notifyObservers(new BoardEvent(false));
 		} else if (goalAchieved()) {
-			notifyObservers(true);
+			notifyObservers(new BoardEvent(true));
 		}
 	}
 	

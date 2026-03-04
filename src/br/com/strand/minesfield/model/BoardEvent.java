@@ -1,9 +1,9 @@
 package br.com.strand.minesfield.model;
 
-public class ResultEvent {
+public class BoardEvent {
 	private final boolean win;
 
-	public ResultEvent(boolean win) {
+	public BoardEvent(boolean win) {
 		super();
 		this.win = win;
 	}
