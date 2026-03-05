@@ -1,3 +1,2 @@
-/bin/
-/.gitignore
-/test/
+bin/
+test/
